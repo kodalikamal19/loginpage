@@ -1,10 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_pymongo import PyMongo
+import os
+
+
+
 
 app = Flask(__name__)
 
 # Replace the below URI with your actual Atlas connection string
-app.config["MONGO_URI"] = "mongodb+srv://kamal:kamal_69@cluster0.bxsub5c.mongodb.net/loginDB?retryWrites=true&w=majority"
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 mongo = PyMongo(app)
 
